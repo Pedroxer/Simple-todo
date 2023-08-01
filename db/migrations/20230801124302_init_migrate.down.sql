@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS "tasks_to_list"; 
+DROP TABLE IF EXISTS "user_to_list";
+DROP TABLE IF EXISTS "tasks";
+DROP TABLE IF EXISTS "users";
+DROP TABLE IF EXISTS "lists";
