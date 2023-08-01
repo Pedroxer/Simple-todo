@@ -3,15 +3,19 @@ INSERT INTO "users"
 (username, password, email) 
 values ($1,$2,$3) RETURNING *;
 
--- name: SelectUser :one
-SELECT username, password, email 
-FROM "users" where id = $1;
+-- name: GetUser :one
+SELECT *
+FROM "users" where username = $1;
 
--- name: UpdateUser :exec
+-- name: ChangePassword :exec
 UPDATE "users" SET
-    password = $2,
-    email = $3
-    where id = $1;
+    password = $2
+    where username = $1;
+
+-- name: ChangeEmail :exec
+UPDATE "users" SET
+    email = $2
+    where username = $1;
 
 -- name: DeleteUser :exec
-DELETE FROM "users" where id = $1; 
+DELETE FROM "users" where username = $1; 

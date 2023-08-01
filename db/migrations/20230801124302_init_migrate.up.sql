@@ -10,7 +10,7 @@ CREATE TABLE "tasks" (
 
 CREATE TABLE "users" (
   "id" bigserial PRIMARY KEY,
-  "username" varchar NOT NULL,
+  "username" varchar UNIQUE NOT NULL,
   "password" varchar NOT NULL,
   "email" varchar NOT NULL,
   "created_at" timestamp DEFAULT (now())
