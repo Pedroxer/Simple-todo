@@ -17,7 +17,7 @@ type List struct {
 
 type Task struct {
 	ID          int64          `json:"id"`
-	Name        sql.NullString `json:"name"`
+	Name        string         `json:"name"`
 	Description sql.NullString `json:"description"`
 	// 1 for important, 0 for regular task
 	Important sql.NullInt32 `json:"important"`

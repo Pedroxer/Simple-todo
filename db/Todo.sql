@@ -1,6 +1,6 @@
 CREATE TABLE "tasks" (
   "id" bigserial PRIMARY KEY,
-  "name" varchar,
+  "name" varchar UNIQUE NOT NULL,
   "description" text,
   "important" integer,
   "done" integer,
@@ -18,7 +18,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "lists" (
   "id" integer PRIMARY KEY,
-  "title" varchar NOT NULL,
+  "title" varchar UNIQUE NOT NULL,
   "created_at" timestamp
 );
 
