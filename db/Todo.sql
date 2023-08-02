@@ -17,9 +17,9 @@ CREATE TABLE "users" (
 );
 
 CREATE TABLE "lists" (
-  "id" integer PRIMARY KEY,
+  "id" bigserial PRIMARY KEY,
   "title" varchar UNIQUE NOT NULL,
-  "created_at" timestamp
+  "created_at" timestamp DEFAULT (now())
 );
 
 CREATE TABLE "user_to_list" (

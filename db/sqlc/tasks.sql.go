@@ -60,16 +60,16 @@ func (q *Queries) ChangeTaskDone(ctx context.Context, arg ChangeTaskDoneParams) 
 }
 
 const changeTaskName = `-- name: ChangeTaskName :exec
-UPDATE "tasks" SET name = $1 where name = $2
+UPDATE "tasks" SET name = $1 where id = $2
 `
 
 type ChangeTaskNameParams struct {
-	Name   string `json:"name"`
-	Name_2 string `json:"name_2"`
+	Name string `json:"name"`
+	ID   int64  `json:"id"`
 }
 
 func (q *Queries) ChangeTaskName(ctx context.Context, arg ChangeTaskNameParams) error {
-	_, err := q.db.ExecContext(ctx, changeTaskName, arg.Name, arg.Name_2)
+	_, err := q.db.ExecContext(ctx, changeTaskName, arg.Name, arg.ID)
 	return err
 }
 

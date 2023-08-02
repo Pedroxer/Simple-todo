@@ -10,16 +10,16 @@ import (
 )
 
 const changeListName = `-- name: ChangeListName :exec
-UPDATE "lists" SET title = $1 where title = $2
+UPDATE "lists" SET title = $1 where id = $2
 `
 
 type ChangeListNameParams struct {
-	Title   string `json:"title"`
-	Title_2 string `json:"title_2"`
+	Title string `json:"title"`
+	ID    int64  `json:"id"`
 }
 
 func (q *Queries) ChangeListName(ctx context.Context, arg ChangeListNameParams) error {
-	_, err := q.db.ExecContext(ctx, changeListName, arg.Title, arg.Title_2)
+	_, err := q.db.ExecContext(ctx, changeListName, arg.Title, arg.ID)
 	return err
 }
 

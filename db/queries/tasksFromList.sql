@@ -8,3 +8,7 @@ where task_id = $2;
 
 -- name: DeleteTaskFromList :exec
 DELETE FROM "tasks_to_list" where task_id = $1;
+
+-- name: ListAllTasks :many
+SELECT tasks.* from "tasks" tasks, "tasks_to_list"
+                 where list_id = $1 and tasks.id = task_id LIMIT 10;

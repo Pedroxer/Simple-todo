@@ -7,7 +7,7 @@ VALUES ($1,$2,$3,$4,$5) RETURNING *;
 SELECT * FROM "tasks" where name = $1;
 
 -- name: ChangeTaskName :exec
-UPDATE "tasks" SET name = $1 where name = $2;
+UPDATE "tasks" SET name = $1 where id = $2;
 
 -- name: ChangeDescription :exec
 UPDATE "tasks" SET 

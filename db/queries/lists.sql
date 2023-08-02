@@ -6,7 +6,7 @@ values ($1) RETURNING *;
 SELECT * FROM "lists" where title = $1;
 
 -- name: ChangeListName :exec
-UPDATE "lists" SET title = $1 where title = $2;
+UPDATE "lists" SET title = $1 where id = $2;
 
 
 

@@ -27,10 +27,43 @@ func (q *Queries) AddListToUser(ctx context.Context, arg AddListToUserParams) (U
 }
 
 const deleteListFromUser = `-- name: DeleteListFromUser :exec
-DELETE FROM "user_to_list" where list_id = $1
+DELETE FROM "user_to_list" where list_id = $1 and user_id = $2
 `
 
-func (q *Queries) DeleteListFromUser(ctx context.Context, listID int32) error {
-	_, err := q.db.ExecContext(ctx, deleteListFromUser, listID)
+type DeleteListFromUserParams struct {
+	ListID int32 `json:"list_id"`
+	UserID int32 `json:"user_id"`
+}
+
+func (q *Queries) DeleteListFromUser(ctx context.Context, arg DeleteListFromUserParams) error {
+	_, err := q.db.ExecContext(ctx, deleteListFromUser, arg.ListID, arg.UserID)
 	return err
+}
+
+const listAllUserLists = `-- name: ListAllUserLists :many
+SELECT lists.id, lists.title, lists.created_at from "lists" lists, "user_to_list"
+    where user_id = $1 and lists.id = list_id LIMIT 10
+`
+
+func (q *Queries) ListAllUserLists(ctx context.Context, userID int32) ([]List, error) {
+	rows, err := q.db.QueryContext(ctx, listAllUserLists, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []List
+	for rows.Next() {
+		var i List
+		if err := rows.Scan(&i.ID, &i.Title, &i.CreatedAt); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }

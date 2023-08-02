@@ -49,3 +49,39 @@ func (q *Queries) DeleteTaskFromList(ctx context.Context, taskID int32) error {
 	_, err := q.db.ExecContext(ctx, deleteTaskFromList, taskID)
 	return err
 }
+
+const listAllTasks = `-- name: ListAllTasks :many
+SELECT tasks.id, tasks.name, tasks.description, tasks.important, tasks.done, tasks.deadline, tasks.created_at from "tasks" tasks, "tasks_to_list"
+                 where list_id = $1 and tasks.id = task_id LIMIT 10
+`
+
+func (q *Queries) ListAllTasks(ctx context.Context, listID int32) ([]Task, error) {
+	rows, err := q.db.QueryContext(ctx, listAllTasks, listID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Task
+	for rows.Next() {
+		var i Task
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Description,
+			&i.Important,
+			&i.Done,
+			&i.Deadline,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}

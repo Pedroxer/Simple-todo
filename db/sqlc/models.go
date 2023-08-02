@@ -10,7 +10,7 @@ import (
 )
 
 type List struct {
-	ID        int32        `json:"id"`
+	ID        int64        `json:"id"`
 	Title     string       `json:"title"`
 	CreatedAt sql.NullTime `json:"created_at"`
 }
