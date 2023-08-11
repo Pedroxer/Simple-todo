@@ -41,7 +41,7 @@ func (q *Queries) ChangePassword(ctx context.Context, arg ChangePasswordParams) 
 	return err
 }
 
-const createUser = `-- name: CreateUser :one
+const createUser = `-- name: createUser :one
 INSERT INTO "users"
 (username, password, email) 
 values ($1,$2,$3) RETURNING id, username, password, email, created_at

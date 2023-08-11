@@ -26,9 +26,10 @@ func NewServer(config util.Config, db *sqlc.Queries) *Server {
 func (server *Server) SetupRoutes() {
 	router := gin.Default()
 	authRoutes := router.Group("/").Use(authMiddlware(server.tokenMaker))
-	router.POST("/user", server.CreateUser)
+	router.POST("/user", server.createUser)
+	router.GET("/user", server.getUser)
 
-	authRoutes.GET("/user", server.getUser)
+	authRoutes.POST("/user/task")
 
 	server.router = router
 }
