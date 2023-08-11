@@ -5,12 +5,9 @@ import (
 	"log"
 	"os"
 	"testing"
-
-	
 )
 
 var testQueries *Queries
-var testDB *sql.DB
 
 func TestMain(m *testing.M) {
 	var err error
@@ -19,7 +16,7 @@ func TestMain(m *testing.M) {
 		log.Fatal("Error connecting to the database", err)
 	}
 	testQueries = New(testDB)
-	
+
 	os.Exit(m.Run())
 
 }

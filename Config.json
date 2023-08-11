@@ -1,0 +1,7 @@
+{
+  "DBDriver": "postgres",
+  "DBAddress": "postgresql://root:secret@localhost:5432/todo?sslmode=disable",
+  "ServerAddress": "127.0.0.1:8080",
+  "TokenKey": "insert here",
+  "TokenDuration": "15m"
+}
