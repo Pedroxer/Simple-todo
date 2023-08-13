@@ -20,7 +20,10 @@ func main() {
 		log.Fatal("cannot connect to the db", err)
 	}
 	query := sqlc.New(db)
-	server := api.NewServer(config, query)
+	server, err := api.NewServer(config, query)
+	if err != nil {
+		log.Fatal("cannot create a server")
+	}
 	err = server.Start(config)
 	if err != nil {
 		log.Fatal("cannot start the server", err)

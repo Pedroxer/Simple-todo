@@ -2,6 +2,6 @@
   "DBDriver": "postgres",
   "DBAddress": "postgresql://root:secret@localhost:5432/todo?sslmode=disable",
   "ServerAddress": "127.0.0.1:8080",
-  "TokenKey": "12345678901234567890123456789012",
+  "TokenKey": "1234567890abcdefghijkl98765432101",
   "TokenDuration": "15m"
 }
