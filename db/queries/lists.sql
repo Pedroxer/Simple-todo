@@ -3,7 +3,7 @@ INSERT INTO "lists" (title)
 values ($1) RETURNING *;
 
 -- name: GetList :one
-SELECT * FROM "lists" where title = $1;
+SELECT * FROM "lists" where id = $1;
 
 -- name: ChangeListName :exec
 UPDATE "lists" SET title = $1 where id = $2;
@@ -11,4 +11,4 @@ UPDATE "lists" SET title = $1 where id = $2;
 
 
 -- name: DeleteList :exec
-DELETE FROM "lists" where title = $1;
+DELETE FROM "lists" where id = $1;

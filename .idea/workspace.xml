@@ -6,13 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="1ea5df07-c578-4a65-9f72-286a5c115532" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/lists.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/lists.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/tasks.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/tasks.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/TokenJwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/token/TokenJwt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/maker.go" beforeDir="false" afterPath="$PROJECT_DIR$/token/maker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/queries/lists.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/queries/lists.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/queries/tasksFromList.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/queries/tasksFromList.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/ListsFromUsers.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/ListsFromUsers.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/lists.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/lists.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/models.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/tasks.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/tasks.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/tasksFromList.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/tasksFromList.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/users.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/users.sql.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,31 +38,32 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: -1
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": -1
+}]]></component>
   <component name="ProjectId" id="2Tny7Vyuyvx2rz2w6GHrzjthwhO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "taskAndLists",
-    "go.import.settings.migrated": "true",
-    "last_opened_file_path": "/home/melrox",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;taskAndLists&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/melrox&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -77,7 +83,7 @@
       <window_info anchor="bottom" id="Find" show_stripe_button="false" weight="0.32994187" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" weight="0.3302696" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.24563953" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.24563953" />
       <window_info anchor="bottom" id="Services" order="3" />
       <window_info anchor="right" id="Endpoints" />
       <window_info anchor="right" id="make" side_tool="true" />
@@ -91,7 +97,7 @@
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Todo" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind />
+      <kind value="FILE" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
@@ -99,7 +105,7 @@
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="Todo" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind />
+      <kind value="DIRECTORY" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />

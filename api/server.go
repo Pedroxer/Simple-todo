@@ -38,8 +38,18 @@ func (server *Server) SetupRoutes() {
 	router.POST("/user/login", server.loginUser)
 
 	authRoutes.POST("/task", server.createTask)
+	authRoutes.GET("/task", server.getTask)
+	authRoutes.POST("/task/name", server.updateName)
+	authRoutes.POST("/task/description", server.updateDescription)
+	authRoutes.POST("/task/order", server.updateOrder)
+	authRoutes.POST("task/done", server.updateDone)
+	authRoutes.POST("/task/deadline", server.updateDeadline)
+	authRoutes.DELETE("/task", server.deleteTask)
 
 	authRoutes.POST("/list", server.createList)
+	authRoutes.GET("/list", server.getList)
+	authRoutes.POST("/list/title", server.changeListTitle)
+	authRoutes.DELETE("/list", server.deleteList)
 
 	server.router = router
 }
