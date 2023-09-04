@@ -7,7 +7,7 @@ UPDATE "tasks_to_list" SET list_id = $1
 where task_id = $2;
 
 -- name: DeleteTaskFromList :exec
-DELETE FROM "tasks_to_list" where task_id = $1;
+DELETE FROM "tasks_to_list" where task_id = $1 and list_id = $2;
 
 -- name: ListAllTasks :many
 SELECT tasks.* from "tasks" tasks, "tasks_to_list"

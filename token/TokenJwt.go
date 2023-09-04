@@ -3,9 +3,9 @@ package token
 import (
 	"errors"
 	"fmt"
+	"log"
+	"time"
 
-	"github.com/Pedroxer/Simple-todo/db/sqlc"
-	"github.com/Pedroxer/Simple-todo/util"
 	"github.com/golang-jwt/jwt"
 )
 
@@ -13,20 +13,24 @@ type JWTMaker struct {
 	secretKey string
 }
 
-func NewJwtToken(secretKey string) *JWTMaker {
+func NewJwtToken(secretKey string) (*JWTMaker, error) {
+	if len(secretKey) < 32 {
+		return nil, errors.New("invalid key size: size must be 32")
+	}
 	return &JWTMaker{
 		secretKey: secretKey,
-	}
+	}, nil
 }
-func (jwtM *JWTMaker) CreateToken(u sqlc.User, conf util.Config) (string, error) {
-	payload, err := NewPayload(u.Username, conf.TokenDuration)
+func (jwtM *JWTMaker) CreateToken(username string, duration time.Duration) (string, error) {
+	payload, err := NewPayload(username, duration)
 	if err != nil {
 		return "", err
 	}
-	token := jwt.NewWithClaims(jwt.SigningMethodEdDSA, payload)
-
-	tokenString, err := token.SignedString(jwtM.secretKey)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
+	//hMac := hmac.New(sha256.New, []byte(jwtM.secretKey))
+	tokenString, err := token.SignedString([]byte(jwtM.secretKey))
 	if err != nil {
+		log.Println(err)
 		return "", fmt.Errorf("Error generating token:%s", err)
 	}
 	return tokenString, nil

@@ -16,18 +16,16 @@ type CreateUserRequest struct {
 }
 
 type UserResponse struct {
-	Username  string       `json:"username"`
-	Password  string       `json:"password"`
-	Email     string       `json:"email"`
-	CreatedAt sql.NullTime `json:"CreatedAt"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }
 
 func newUserResp(user sqlc.User) UserResponse {
 	return UserResponse{
-		Username:  user.Username,
-		Password:  user.Password,
-		Email:     user.Email,
-		CreatedAt: user.CreatedAt,
+		Username: user.Username,
+		Password: user.Password,
+		Email:    user.Email,
 	}
 }
 func (server *Server) createUser(ctx *gin.Context) {
@@ -73,7 +71,8 @@ func (server *Server) getUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
-	ctx.JSON(http.StatusOK, user)
+	resp := newUserResp(user)
+	ctx.JSON(http.StatusOK, resp)
 }
 
 type loginUserReq struct {
